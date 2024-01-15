@@ -3,7 +3,7 @@ from .models import Test, Question, Choice, UserAnswer
 
 admin.site.register(Test)
 class TestAdmin(admin.ModelAdmin):
-    list_display = ['title', 'description']
+    list_display = ['title', 'description', 'questions']
     search_fields = ['title']
 
 admin.site.register(Question)
