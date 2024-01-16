@@ -6,40 +6,56 @@
 <body>
     <div name="header">
         <h1>SKForms</h1>
+
+        {{ test.title }}
+
+    </div>
+    <div>
+        {% for q in test.questions.all %}
+        <div>
+            {% if %}
+            <div>{{ q.text }}</div>
+            <div>{{ q.text }}</div>
+            {% else %}
+
+            {% endif %}
+        </div>
+        {% endfor %}
+        
     </div>
 </body>
 </html>
 <script>
-    function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-    window.onload = function(){
-        var csrftoken = getCookie('csrftoken');
-        var data = {
-        'testId' : 0,
-        }
+//     function getCookie(name) {
+//     var cookieValue = null;
+//     if (document.cookie && document.cookie !== '') {
+//         var cookies = document.cookie.split(';');
+//         for (var i = 0; i < cookies.length; i++) {
+//             var cookie = cookies[i].trim();
+//             if (cookie.substring(0, name.length + 1) === (name + '=')) {
+//                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+//                 break;
+//             }
+//         }
+//     }
+//     return cookieValue;
+// }
+//     window.onload = function(){
+//         var csrftoken = getCookie('csrftoken');
+//         var data = {
+//         'testId' : 2,
+//         }
 
-        fetch('/passTest/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken
-            },
-            body: JSON.stringify(data)
-        })
-        .then(function(response) {
-        console.log(response.json());
-        })
-    };
+//         fetch('/passTest/', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 'X-CSRFToken': csrftoken
+//             },
+//             body: JSON.stringify(data)
+//         })
+//         .then(function(response) {
+//         console.log(response.json());
+//         })
+//     };
 </script>

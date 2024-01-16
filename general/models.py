@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Test(models.Model):
     title = models.CharField(max_length=255, verbose_name=_('Название'))
     description = models.TextField(verbose_name=_('Описание'))
-    questions = models.ManyToManyField('general.Question')
+    questions = models.ManyToManyField('general.Question', blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('Автор'))
     created_at = models.DateTimeField(auto_now_add=True, null=True, verbose_name=_("Создан"))
     updated_at = models.DateTimeField(auto_now=True, null=True, verbose_name=_("Изменён"))
@@ -18,7 +18,7 @@ class Question(models.Model):
     text = models.TextField(verbose_name=_("Вопрос"))
     question_type = models.CharField(choices=QUESTION_TYPES, max_length=2, verbose_name=_('тип вопроса'))
     correct_answer = models.TextField(verbose_name=_('правильный ответ'))
-    choices = models.ManyToManyField('general.Choice')
+    choices = models.ManyToManyField('general.Choice', blank=True)
     def __str__(self):
         return self.text
 
